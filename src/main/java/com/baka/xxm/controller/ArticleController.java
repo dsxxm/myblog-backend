@@ -19,7 +19,7 @@ public class ArticleController {
     this.article_service = article_service;
   }
 
-  @PostMapping("/create")
+  @PostMapping
   Result<String> create(@RequestBody Article article) {
     if (article_service.create(article)) {
       return Result.success();
