@@ -14,9 +14,18 @@
       <result property="updated_at" column="updated_at" />
   </resultMap>
 
+  <select id="count" resultType="long">
+    select count(*) from articles
+  </select>
+
   <sql id="AllColumns">
     id,title,slug,summary,content,author,created_at,updated_at
   </sql>
+  <select id="selectList" resultMap="BaseResultMap">
+    select <include refid="AllColumns"/> from articles
+    order by id desc
+    limit #{limit} offset #{offset}
+  </select>
   <select id="selectById" resultMap="BaseResultMap">
     select <include refid="AllColumns"/> from articles 
     where id = #{id}
