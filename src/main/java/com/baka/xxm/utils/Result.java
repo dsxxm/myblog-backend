@@ -53,6 +53,10 @@ public class Result<T> {
     return new Result<T>(500, message, data);
   }
 
+  public static <T> Result<T> error(int code, String message) {
+    return new Result<T>(code, message, null);
+  }
+
   public static <T> Result<T> error(String message) {
     return new Result<T>(500, message, null);
   }
